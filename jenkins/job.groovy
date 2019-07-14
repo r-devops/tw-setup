@@ -28,10 +28,12 @@ node() {
     }
 
     stage('Infra Setup - Terraform') {
-        sh '''
-            cd terraform 
-            terraform init
-            terraform apply -auto-approve -var-file=proj-info.tfvars
-        '''
+        wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+            sh '''
+                cd terraform 
+                terraform init
+                terraform apply -auto-approve -var-file=proj-info.tfvars
+            '''
+        }
     }
 }
