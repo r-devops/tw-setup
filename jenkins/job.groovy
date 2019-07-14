@@ -4,6 +4,7 @@ node() {
     for (item in check_vars) {
         try {
             def x = "${item}"
+            def script = "Hello ${item}"
             def z = Eval.me('x', x, '"' + script + '".toString()')
             println z
         } catch(e) {
