@@ -25,7 +25,7 @@ resource "aws_security_group" "rds-sg" {
       from_port                 = 443
       to_port                   = 443
       protocol                  = "-1"
-      cidr_blocks               = "${var.VPC_CIDR}"
+      cidr_blocks               = ["${var.VPC_CIDR}"]
     }
 
     egress {
