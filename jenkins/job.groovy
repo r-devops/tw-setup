@@ -6,14 +6,13 @@ node() {
             println item
         } catch(e) {
             println "Variable " item "missing"
+            sh 'false'
         }
     }
 
     stage('Infra Setup - Terraform') {
         sh '''
-            cd terraform
-            terraform init
-            terraform plan
+            ls
         '''
     }
 }
