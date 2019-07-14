@@ -8,6 +8,11 @@ resource "null_resource" "make-ssh-keys" {
     }
 }
 
+module "pem_content" {
+  source = "matti/outputs/shell"
+  command = "cat deployer"
+}
+
 output "pem_content" {
-    value = "nothing"
+    value = "${module.pem_content.stdout}"
 }
