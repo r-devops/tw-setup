@@ -7,7 +7,7 @@
 - name: Download Apache 
   unarchive:
     src: https://www-eu.apache.org/dist//httpd/httpd-2.4.39.tar.gz
-    dest: /root/apache
+    dest: /root
     remote_src: yes
 
 - name: Compile Apache 
