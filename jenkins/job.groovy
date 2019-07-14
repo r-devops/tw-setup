@@ -21,7 +21,8 @@ node() {
 
     stage('Infra Setup - Terraform') {
         sh '''
-            ls
+            cd terraform 
+            terraform init
         '''
     }
 }
