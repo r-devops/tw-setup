@@ -15,12 +15,13 @@ node() {
         sh 'false'
     }
 
+    stage('Clone Repo') {
+        git 'https://github.com/r-devops/tw-setup.git'
+    }
 
     stage('Infra Setup - Terraform') {
         sh '''
-            cd terraform
-            terraform init
-            terraform plan
+            ls
         '''
     }
 }
