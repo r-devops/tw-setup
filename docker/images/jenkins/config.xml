@@ -8,8 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://gitlab.com/batch38/jenkins.git</url>
-        <credentialsId>GitLabUserPass</credentialsId>
+        <url>https://github.com/r-devops/tw-setup.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
