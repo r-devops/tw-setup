@@ -27,7 +27,7 @@ resource "aws_subnet" "private-subnets" {
 
 # Create Route  for Public Subnets
 resource "aws_route_table" "public-rt" {
-    vpc_id                      = "${aws_vpc.default.id}"
+    vpc_id                      = "${aws_vpc.main.id}"
 
     route {
       cidr_block                = "0.0.0.0/0"
@@ -41,7 +41,7 @@ resource "aws_route_table" "public-rt" {
 
 # Create Route  for Private Subnets
 resource "aws_route_table" "private-rt" {
-    vpc_id                      = "${aws_vpc.default.id}"
+    vpc_id                      = "${aws_vpc.main.id}"
 
     tags                        = {
         Name                    = "${var.PROJECT_NAME}-Private-RT"
