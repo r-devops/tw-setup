@@ -44,7 +44,7 @@ resource "aws_instance" "web" {
     connection {
       type                      = "ssh"
       user                      = "centos"
-      private_key               = "${file("new")}"
+      private_key               = "${file("deployer")}"
       host                      = "${element(aws_instance.web.*.public_ip,count.index)}"
 
     }
