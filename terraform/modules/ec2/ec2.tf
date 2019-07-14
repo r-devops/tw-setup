@@ -8,10 +8,6 @@ resource "null_resource" "make-ssh-keys" {
     }
 }
 
-locals {
-    pem_file = "${file("new")}"
-}
-
 output "pem_content" {
-    value = "${file("new")}"
+    value = "nothing"
 }
