@@ -33,8 +33,8 @@ resource "aws_instance" "web" {
   ami                           = "${data.aws_ami.centos.id}"
   instance_type                 = "t2.small"
   key_name                      = "${aws_key_pair.deployer.key_name}"
-  vpc_security_group_ids        = "${aws_security_group.ssh-sg.id}"
-  
+  vpc_security_group_ids        = ["${aws_security_group.ssh-sg.id}"]
+
   tags                          = {
       Name                      = "${var.PROJECT_NAME}-node-${count.index}"
   }
