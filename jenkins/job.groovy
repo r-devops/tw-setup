@@ -15,6 +15,14 @@ node() {
         sh 'false'
     }
 
+    // Check AWS_DEFAULT_REGION="us-east-1"
+    try {
+        println AWS_DEFAULT_REGION
+    } catch(e) {
+        println 'Variable AWS_DEFAULT_REGION is missing'
+        sh 'false'
+    }
+
     stage('Clone Repo') {
         git 'https://github.com/r-devops/tw-setup.git'
     }
