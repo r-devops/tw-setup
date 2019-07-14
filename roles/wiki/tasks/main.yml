@@ -14,10 +14,10 @@
   shell: cd /root/httpd-2.4.39 && ./configure && make clean && make && make install 
 
 - name: Create two hard links
-  file:
-    src: /usr/local/apache2/bin/apachectl
+  copy:
+    src: httpd
     dest: /etc/init.d/httpd
-    state: link
+    mode: 0755
 
 - name: Reload Systemctl Daemon 
   shell: systemctl daemon-reload 

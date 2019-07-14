@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# description: Apache httpd init script
+# processname: httpd
+# chkconfig: 234 20 80
+#
+
+case $1 in
+	start)
+	  /usr/local/apache2/bin/httpd start 
+	;;
+	stop)
+	  /usr/local/apache2/bin/httpd stop
+	;;
+	restart)
+	  /usr/local/apache2/bin/httpd stop
+      sleep 5
+      /usr/local/apache2/bin/httpd start
+	;;
+	*)
+		echo -e "Usage:: httpd {start/stop/restart}
+        exit 1
+	;;
+esac
