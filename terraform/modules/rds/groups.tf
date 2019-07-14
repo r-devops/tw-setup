@@ -22,9 +22,9 @@ resource "aws_security_group" "rds-sg" {
     vpc_id                      = "${var.VPC_ID}"
 
     ingress {
-      from_port                 = 443
-      to_port                   = 443
-      protocol                  = "-1"
+      from_port                 = 3306
+      to_port                   = 3306
+      protocol                  = "TCP"
       cidr_blocks               = ["${var.VPC_CIDR}"]
     }
 
