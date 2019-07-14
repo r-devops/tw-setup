@@ -4,7 +4,7 @@ node() {
         println AWS_ACCESS_KEY_ID
     } catch(e) {
         println 'Variable AWS_ACCESS_KEY_ID is missing'
-        System.exit(1)
+        sh 'false'
     }
 
     // Check AWS_SECRET_ACCESS_KEY
@@ -12,7 +12,7 @@ node() {
         println AWS_ACCESS_KEY_ID
     } catch(e) {
         println 'Variable AWS_ACCESS_KEY_ID is missing'
-        System.exit(1)
+        sh 'false'
     }
 
 
