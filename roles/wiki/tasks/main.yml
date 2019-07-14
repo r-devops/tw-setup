@@ -12,3 +12,13 @@
 
 - name: Compile Apache 
   shell: cd /root/httpd-2.4.39 && ./configure && make clean && make && make install 
+
+- name: Create two hard links
+  file:
+    src: /usr/local/apache2/bin/apachectl
+    dest: /etc/init.d/httpd
+    state: link
+
+- name: Reload Systemctl Daemon 
+  shell: systemctl daemon-reload 
+
