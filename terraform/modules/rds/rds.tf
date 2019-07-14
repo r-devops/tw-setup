@@ -10,7 +10,7 @@ resource "aws_db_instance" "mariadb-rds" {
     password                                = "${var.DBPASS}"
     parameter_group_name                    = "${aws_db_parameter_group.mariadb.id}"
     db_subnet_group_name                    = "${aws_db_subnet_group.mariadb.id}"
-    vpc_security_group_ids                  = "${aws_security_group.rds-sg.id}"
+    vpc_security_group_ids                  = ["${aws_security_group.rds-sg.id}"]
     skip_final_snapshot                     = true ## Optionally enabled for deleting through terraform
     tags                                    = {
         Name                                = "${var.PROJECT_NAME}-rds"
