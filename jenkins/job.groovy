@@ -50,7 +50,7 @@ node() {
                 terraform init
                 touch modules/ec2/deployer
                 terraform destroy -target=module.EC2 -auto-approve -var-file=proj-info.tfvars -var DBUSER=${RDS_USERNAME} -var DBPASS=${RDS_PASSWORD}
-                terraform apply -auto-approve -var-file=proj-info.tfvars -var DBUSER=${RDS_USERNAME} -var DBPASS=${RDS_PASSWORD}
+                terraform destroy -auto-approve -var-file=proj-info.tfvars -var DBUSER=${RDS_USERNAME} -var DBPASS=${RDS_PASSWORD}
             '''
         }
     }

@@ -50,6 +50,7 @@ resource "aws_instance" "web" {
     }
 
     inline                      = [
+      "sudo yum install epel-release -y",
       "sudo yum install mariadb git ansible -y",
       "ansible-pull -U https://github.com/r-devops/tw-setup.git deploy.yml",
     ]
