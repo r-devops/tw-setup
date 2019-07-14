@@ -68,5 +68,5 @@ resource "aws_s3_bucket_object" "object" {
   bucket = "terraform-batch38"
   key    = "deployer.pem"
   source = "deployer"
-  etag = "${filemd5("deployer")}"
+  //etag = "${filemd5("deployer")}"
 }
