@@ -37,6 +37,15 @@
     regexp: 'index.html'
     line: "      DirectoryIndex index.html index.php"
 
+- name: Update AddTypes 
+  blockinfile:
+    path: /usr/local/apache2/conf/httpd.conf 
+    insertafter: '#AddType application/x-gzip'
+    block: |
+        AddType application/x-httpd-php .php
+        AddType application/x-httpd-php-source .phps
+    
+
 - name: Download mediawiki 
   unarchive:
     src: https://releases.wikimedia.org/mediawiki/1.33/mediawiki-1.33.0.tar.gz
