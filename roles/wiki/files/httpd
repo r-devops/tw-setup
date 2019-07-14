@@ -20,7 +20,7 @@ case $1 in
     status)
       /usr/local/apache2/bin/apachectl status
 	*)
-		echo -e "Usage:: httpd {start/stop/restart}
+		echo -e "Usage:: httpd {start/stop/restart}"
         exit 1
 	;;
 esac
