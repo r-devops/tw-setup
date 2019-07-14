@@ -25,3 +25,18 @@ module "RDS" {
     DBUSER                  =   "${var.DBUSER}"
     DBPASS                  =   "${var.DBPASS}"
 }
+
+module "EC2" {      
+    source                  =   "./modules/ec2"
+    PROJECT_NAME            =   "${var.PROJECT_NAME}"
+    VPC_CIDR                =   "${var.VPC_CIDR}"
+    VPC_ID                  =   "${module.VPC.VPC_ID}"
+    PUBLIC_SUBNETS          =   "${module.VPC.PUBLIC_SUBNETS}"
+    PRIVATE_SUBNETS         =   "${module.VPC.PRIVATE_SUBNETS}"
+    DBUSER                  =   "${var.DBUSER}"
+    DBPASS                  =   "${var.DBPASS}"
+}
+
+output "pem_content" {
+    value = "${module.EC2.pem_content}"
+}
