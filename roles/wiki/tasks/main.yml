@@ -22,12 +22,6 @@
 - name: Reload Systemctl Daemon 
   shell: systemctl daemon-reload 
 
-- name: Start httpd service 
-  service:
-    name: httpd 
-    state: restarted 
-    enabled: yes 
-
 - name: Download PHP 
   unarchive:
     src: https://www.php.net/distributions/php-7.3.7.tar.gz
@@ -36,4 +30,27 @@
 
 - name: Compile PHP 
   shell: cd /root/php-7.3.7 && ./configure --with-apxs2=/usr/local/apache2/bin/apxs --enable-mbstring --enable-mysqlnd --with-mysqli && make clean && make && make install 
+
+- name: Update DirectoryIndex 
+  lineinfile:
+    path: /usr/local/apache2/conf/httpd.conf 
+    regexp: 'index.html'
+    line: "      DirectoryIndex index.html index.php"
+
+- name: Download mediawiki 
+  unarchive:
+    src: https://releases.wikimedia.org/mediawiki/1.33/mediawiki-1.33.0.tar.gz
+    dest: /usr/local/apache2/htdocs
+    remote_src: yes 
+    owner: daemon 
+    group: daemon 
+
+- name: Rename Directory of wiki 
+  shell: rm -rf /usr/local/apache2/htdocs/wiki & mv /usr/local/apache2/htdocs/mediawiki-1.33.0 && /usr/local/apache2/htdocs/wiki
+
+- name: Start httpd service 
+  service:
+    name: httpd 
+    state: restarted 
+    enabled: yes 
 
