@@ -1,4 +1,14 @@
-- name: Print Hello 
-  debug:
-    msg: "Hello"
+- name: Install dependency packages 
+  package:
+    name: "{{item}}"
+    state: present 
+  loop: ["apr-util-devel", "gcc", "pcre-devel", "libxml2-devel", "mariadb"]
 
+- name: Download Apache 
+  unarchive:
+    src: https://www-eu.apache.org/dist//httpd/httpd-2.4.39.tar.gz
+    dest: /root/apache
+    remote_src: yes
+
+- name: Compile Apache 
+  shell: cd /root/apache && ./configure && make clean && make && make install 
