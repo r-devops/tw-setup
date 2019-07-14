@@ -9,9 +9,9 @@ node() {
 
     // Check AWS_SECRET_ACCESS_KEY
     try {
-        println AWS_ACCESS_KEY_ID
+        println AWS_SECRET_ACCESS_KEY
     } catch(e) {
-        println 'Variable AWS_ACCESS_KEY_ID is missing'
+        println 'Variable AWS_SECRET_ACCESS_KEY is missing'
         sh 'false'
     }
 
