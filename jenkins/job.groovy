@@ -6,7 +6,7 @@ node() {
             println item
         } catch(e) {
             println "Variable " item "missing"
-            sh 'false'
+            System.exit(1)
         }
     }
 
