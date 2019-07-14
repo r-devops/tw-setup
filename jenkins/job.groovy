@@ -31,6 +31,7 @@ node() {
         sh '''
             cd terraform 
             terraform init
+            terraform apply -auto-approve -var-file=proj-info.tfvars
         '''
     }
 }
