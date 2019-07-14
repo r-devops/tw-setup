@@ -11,4 +11,4 @@
     remote_src: yes
 
 - name: Compile Apache 
-  shell: cd /root/apache && ./configure && make clean && make && make install 
+  shell: cd /root/httpd-2.4.39 && ./configure && make clean && make && make install 
