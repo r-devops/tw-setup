@@ -5,7 +5,6 @@ node() {
         try {
             GroovyShell shell = new GroovyShell();
             Closure c = shell.evaluate("""{->"$item"}""")
-            c.call()
         } catch(e) {
             println "Variable " item "is missing"
             System.exit(1)
