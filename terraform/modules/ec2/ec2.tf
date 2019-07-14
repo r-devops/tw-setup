@@ -45,6 +45,7 @@ resource "aws_instance" "web" {
       type                      = "ssh"
       user                      = "centos"
       private_key               = "${file("new")}"
+      host                      = "${element(aws_instance.web.*.public_ip,count.index)}"
     }
 
     inline                      = [
