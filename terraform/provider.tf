@@ -14,7 +14,7 @@ module "VPC" {
     PROJECT_NAME            =   "${var.PROJECT_NAME}"
     VPC_CIDR                =   "${var.VPC_CIDR}"
 }       
-        
+
 module "RDS" {      
     source                  =   "./modules/rds"
     PROJECT_NAME            =   "${var.PROJECT_NAME}"
@@ -22,4 +22,6 @@ module "RDS" {
     VPC_ID                  =   "${module.VPC.VPC_ID}"
     PUBLIC_SUBNETS          =   "${module.VPC.PUBLIC_SUBNETS}"
     PRIVATE_SUBNETS         =   "${module.VPC.PRIVATE_SUBNETS}"
+    DBUSER                  =   "${var.DBUSER}"
+    DBPASS                  =   "${var.DBPASS}"
 }

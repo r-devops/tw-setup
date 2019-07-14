@@ -15,11 +15,27 @@ node() {
         sh 'false'
     }
 
-    // Check AWS_DEFAULT_REGION="us-east-1"
+    // Check AWS_DEFAULT_REGION
     try {
         println AWS_DEFAULT_REGION
     } catch(e) {
         println 'Variable AWS_DEFAULT_REGION is missing'
+        sh 'false'
+    }
+
+    // Check RDS DB User 
+    try {
+        println RDS_USERNAME
+    } catch(e) {
+        println 'Variable RDS_USERNAME is missing'
+        sh 'false'
+    }
+
+    // Check RDS DB Password
+    try {
+        println RDS_PASSWORD
+    } catch(e) {
+        println 'Variable RDS_PASSWORD is missing'
         sh 'false'
     }
 
@@ -32,7 +48,7 @@ node() {
             sh '''
                 cd terraform 
                 terraform init
-                terraform apply -auto-approve -var-file=proj-info.tfvars
+                terraform apply -auto-approve -var-file=proj-info.tfvars -var DBUSER=${RDS_USERNAME} -var DBPASS=${RDS_PASSWORD}
             '''
         }
     }

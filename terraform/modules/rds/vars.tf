@@ -8,3 +8,5 @@ variable "PUBLIC_SUBNETS" {
 variable "PRIVATE_SUBNETS" {
     type = "list"
 }
+variable "DBUSER" {}
+variable "DBPASS" {}
