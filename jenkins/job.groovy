@@ -4,8 +4,8 @@ node() {
     for (item in check_vars) {
         try {
             def x = "${item}"
-            //def z = Eval.me('item', x, '"' + script + '".toString()')
-            //println z
+            def z = Eval.me('x', x, '"' + script + '".toString()')
+            println z
         } catch(e) {
             println "Variable " item "missing"
             System.exit(1)
