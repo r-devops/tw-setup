@@ -3,9 +3,9 @@ node() {
     def check_vars = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
     for (item in check_vars) {
         try {
-            def x = "${item}"
+            //def x = "${item}"
             def script = "Hello ${item}"
-            def z = Eval.me('x', x, '"' + script + '".toString()')
+            def z = Eval.me(script + '".toString()')
             println z
         } catch(e) {
             println "Variable " item "missing"
