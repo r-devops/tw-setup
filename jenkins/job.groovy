@@ -48,6 +48,7 @@ node() {
             sh '''
                 cd terraform 
                 terraform init
+                terraform destroy -target=module.ec2 -auto-approve -var-file=proj-info.tfvars -var DBUSER=${RDS_USERNAME} -var DBPASS=${RDS_PASSWORD}
                 terraform apply -auto-approve -var-file=proj-info.tfvars -var DBUSER=${RDS_USERNAME} -var DBPASS=${RDS_PASSWORD}
             '''
         }

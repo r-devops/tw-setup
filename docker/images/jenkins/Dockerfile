@@ -14,5 +14,5 @@ RUN wget https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_
 RUN unzip terraform_0.12.3_linux_amd64.zip 
 RUN mv terraform /bin && rm -f terraform_0.12.3_linux_amd64.zip 
 RUN apk add ansible 
-RUN apk add python 
+RUN apk add python ruby ruby-json
 USER jenkins 
