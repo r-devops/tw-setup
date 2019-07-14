@@ -1,5 +1,5 @@
 node() {
-    if(typeof(PROJ_NAME1)=="undefined"){   
+    if(typeof(PROJ_NAME)=="undefined"){   
         println "Hello PROJ_NAME is not there"   
     }
     stage('Infra Setup - Terraform') {
