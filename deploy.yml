@@ -1,0 +1,5 @@
+- name: Setup Wiki Playbook 
+  hosts: local 
+  become: yes 
+  roles:
+    - wiki 

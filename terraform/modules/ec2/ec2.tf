@@ -37,10 +37,34 @@ resource "aws_instance" "web" {
   subnet_id                     = "${element(var.PUBLIC_SUBNETS, count.index)}"
 
   tags                          = {
-      Name                      = "${var.PROJECT_NAME}-node-${count.index}"
+      Name                      = "${var.PROJECT_NAME}-node-${count.index+1}"
   }
+
+  provisioner "remote-exec" {
+    connection {
+      type                      = "ssh"
+      user                      = "centos"
+      private_key               = "${file("new")}"
+    }
+
+    inline                      = [
+      "sudo yum install mariadb git ansible -y",
+      "ansible-pull -U https://github.com/r-devops/tw-setup.git deploy.yml",
+    ]
+  }
+
 }
 
+
+### Print Pem content 
 output "pem_content" {
     value = "${module.pem_content.stdout}"
+}
+
+## Upload pem file to s3 bucket 
+resource "aws_s3_bucket_object" "object" {
+  bucket = "terraform-batch38"
+  key    = "deployer.pem"
+  source = "deployer"
+  etag = "${filemd5("deployer")}"
 }
