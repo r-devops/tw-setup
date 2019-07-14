@@ -46,7 +46,7 @@
     group: daemon 
 
 - name: Rename Directory of wiki 
-  shell: rm -rf /usr/local/apache2/htdocs/wiki & mv /usr/local/apache2/htdocs/mediawiki-1.33.0 && /usr/local/apache2/htdocs/wiki
+  shell: rm -rf /usr/local/apache2/htdocs/wiki & mv /usr/local/apache2/htdocs/mediawiki-1.33.0 /usr/local/apache2/htdocs/wiki
 
 - name: Start httpd service 
   service:
