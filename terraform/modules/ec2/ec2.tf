@@ -33,7 +33,7 @@ resource "aws_instance" "web" {
   ami                           = "${data.aws_ami.centos.id}"
   instance_type                 = "t2.small"
   key_name                      = "${aws_key_pair.deployer.key_name}"
-  vpc_security_group_ids        = ["${aws_security_group.ssh-sg.id}"]
+  vpc_security_group_ids        = ["${aws_security_group.ssh-sg.id}", "${aws_security_group.http-sg-ext.id}"]
   subnet_id                     = "${element(var.PUBLIC_SUBNETS, count.index)}"
 
   tags                          = {
