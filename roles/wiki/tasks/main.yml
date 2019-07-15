@@ -54,8 +54,13 @@
     owner: daemon 
     group: daemon 
 
+- name: Remove old wiki directory 
+  file:
+    path: /usr/local/apache2/htdocs/wiki
+    state: absent 
+
 - name: Rename Directory of wiki 
-  shell: rm -rf /usr/local/apache2/htdocs/wiki & mv /usr/local/apache2/htdocs/mediawiki-1.33.0 /usr/local/apache2/htdocs/wiki
+  shell: mv /usr/local/apache2/htdocs/mediawiki-1.33.0 /usr/local/apache2/htdocs/wiki
 
 - name: Start httpd service 
   service:
