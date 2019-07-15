@@ -62,6 +62,13 @@
 - name: Rename Directory of wiki 
   shell: mv /usr/local/apache2/htdocs/mediawiki-1.33.0 /usr/local/apache2/htdocs/wiki
 
+- name: Copy DB Config File 
+  template:
+    src: LocalSettings.php
+    dest: /usr/local/apache2/htdocs/wiki/LocalSettings.php
+    owner: daemon 
+    group: daemon
+
 - name: Start httpd service 
   service:
     name: httpd 

@@ -10,3 +10,4 @@ variable "PRIVATE_SUBNETS" {
 }
 variable "DBUSER" {}
 variable "DBPASS" {}
+variable "DBHOST" {}

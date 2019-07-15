@@ -35,6 +35,7 @@ module "EC2" {
     PRIVATE_SUBNETS         =   "${module.VPC.PRIVATE_SUBNETS}"
     DBUSER                  =   "${var.DBUSER}"
     DBPASS                  =   "${var.DBPASS}"
+    DBHOST                  =   "${module.RDS.rds-endpoint}"
 }
 
 output "pem_content" {
